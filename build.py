@@ -87,7 +87,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font:19px/1.75 Merriweather,'
 .tag{font:600 11px/1 Inter,'Inter Fallback',system-ui,sans-serif;border:1px solid var(--line);border-radius:4px;padding:2px 5px;margin-left:6px;color:var(--muted);vertical-align:middle}
 .toggle{background:none;border:1px solid var(--line);border-radius:999px;width:40px;height:40px;cursor:pointer;font-size:18px;color:var(--fg)}
 .bio{display:flex;gap:14px;align-items:center;margin-bottom:40px;font-size:15px;line-height:1.6}
-.avatar{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:22px;background:var(--inline)}
+.avatar{flex:none;width:44px;height:44px;border-radius:50%;background:var(--inline);object-fit:cover}
 .bio p{margin:0}
 .series{font:600 12px/1 Inter,'Inter Fallback',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:40px 0 4px}
 article.card{margin:20px 0 28px}
@@ -164,7 +164,7 @@ def page(title, body, lang="en", desc=BLURB, small=False, alt=None, path="/"):
 <meta property="og:title" content="{html.escape(title_text(title))}"><meta property="og:description" content="{html.escape(desc)}">
 <link rel="canonical" href="{SITE}{path}"><meta property="og:url" content="{SITE}{path}"><meta property="og:type" content="{"article" if small else "website"}">
 <link rel="alternate" type="application/rss+xml" title="{AUTHOR}" href="/rss.xml">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥕</text></svg>">
+<link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 {"".join(f'<link rel="preload" href="/fonts/{f}" as="font" type="font/woff2" crossorigin>' for f in PRELOAD[lang])}
 <style>{STYLE}</style>{THEME_JS}</head>
 <body><div class="wrap"><header class="top">{brand}<div class="tools"><a class="nav" href="{UI[lang]["about_url"]}">{UI[lang]["about"]}</a>{switch}<button class="toggle" onclick="flip()" aria-label="Toggle dark mode">◐</button></div></header>
@@ -285,7 +285,7 @@ def main():
 
     for lang in ("en", "mn"):
         u = UI[lang]
-        idx = f'<aside class="bio"><div class="avatar">🥕</div><p>{u["by"].format(name=f"<b>{AUTHOR}</b>")}</p></aside><main>'
+        idx = f'<aside class="bio"><img class="avatar" src="/avatar.jpg" width="44" height="44" alt=""><p>{u["by"].format(name=f"<b>{AUTHOR}</b>")}</p></aside><main>'
         own = [p for p in posts if p["lang"] == lang]
         rest = [p for p in posts if p["lang"] != lang and not p["pair"]] if lang == "mn" else []
         last = None
