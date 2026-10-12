@@ -1,0 +1,3 @@
+Excalifont (c) 2024 Excalidraw, SIL Open Font License 1.1 (https://openfontlicense.org).
+excalifont-mn.woff2 is a modified version: subsets merged, U+04AE/U+04AF mapped to the Y/y glyphs, renamed "Excalifont MN".
+Inter and Merriweather: SIL Open Font License 1.1 (https://openfontlicense.org), self-hosted from Google Fonts.
