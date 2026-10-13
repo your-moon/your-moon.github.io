@@ -133,6 +133,8 @@ footer a{color:var(--accent);text-decoration:underline;text-underline-offset:3px
 @media (max-width:720px){body{font-size:17px}.post-head h1{font-size:34px}.codehilite{margin:0 -16px 1.6em;border-radius:0}.content blockquote{margin-left:-16px}}
 """
 
+# Cookieless page-view counter; dashboard at https://your-moon.goatcounter.com
+ANALYTICS = '<script data-goatcounter="https://your-moon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
 THEME_JS = """<script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}
 if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
 document.documentElement.dataset.theme=t})();
@@ -166,7 +168,7 @@ def page(title, body, lang="en", desc=BLURB, small=False, alt=None, path="/"):
 <link rel="alternate" type="application/rss+xml" title="{AUTHOR}" href="/rss.xml">
 <link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 {"".join(f'<link rel="preload" href="/fonts/{f}" as="font" type="font/woff2" crossorigin>' for f in PRELOAD[lang])}
-<style>{STYLE}</style>{THEME_JS}</head>
+<style>{STYLE}</style>{THEME_JS}{ANALYTICS}</head>
 <body><div class="wrap"><header class="top">{brand}<div class="tools"><a class="nav" href="{UI[lang]["about_url"]}">{UI[lang]["about"]}</a>{switch}<button class="toggle" onclick="flip()" aria-label="Toggle dark mode">◐</button></div></header>
 {body}
 <footer><a href="/rss.xml">RSS</a> · © {dt.date.today().year} {AUTHOR}</footer></div></body></html>
