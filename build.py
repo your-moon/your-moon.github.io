@@ -133,8 +133,8 @@ footer a{color:var(--accent);text-decoration:underline;text-underline-offset:3px
 @media (max-width:720px){body{font-size:17px}.post-head h1{font-size:34px}.codehilite{margin:0 -16px 1.6em;border-radius:0}.content blockquote{margin-left:-16px}}
 """
 
-# Cookieless page-view counter; dashboard at https://your-moon.goatcounter.com
-ANALYTICS = '<script data-goatcounter="https://your-moon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
+# Cookieless page-view counter; dashboard at https://munkherdene.goatcounter.com
+ANALYTICS = '<script data-goatcounter="https://munkherdene.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
 THEME_JS = """<script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}
 if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
 document.documentElement.dataset.theme=t})();
