@@ -163,6 +163,7 @@ def page(title, body, lang="en", desc=BLURB, small=False, alt=None, path="/"):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title_text(title))}</title>
 <meta name="description" content="{html.escape(desc)}">
+<meta name="google-site-verification" content="L5INWfXsD4HK3UUJ8PuojWUoT8Th-IQpernq4_aVR64">
 <meta property="og:title" content="{html.escape(title_text(title))}"><meta property="og:description" content="{html.escape(desc)}">
 <link rel="canonical" href="{SITE}{path}"><meta property="og:url" content="{SITE}{path}"><meta property="og:type" content="{"article" if small else "website"}">
 <link rel="alternate" type="application/rss+xml" title="{AUTHOR}" href="/rss.xml">
