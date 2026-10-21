@@ -1,10 +1,14 @@
-# I Spent Three Years to Understand This Tiny Program
+# I Tried Building My Own Programming Language
 
-*Building my own programming language — Season 1: Cecile · Part 1: The Interpreter*
+When I first learned to program, there was one thing I never noticed. I only figured it out much later.
 
-Two words on a screen — «Өдрийн мэнд», "Good day" — took me three years to understand.
+Everyone's first program is a single line that puts "Hello World" on the screen. You see it work, you feel good, you move on. Nobody asks where those two words came from, or how they got there. And the teachers don't explain what actually makes it run, either.
 
-Here it is. It's written in **Mon** — a language I built, with keywords in Mongolian — and it compiles straight down to a file the CPU runs:
+Some university courses do teach this well, of course. But I never connected the pieces, and I didn't really understand the point of what I was doing. That was something else I only realized later.
+
+I never asked, either. Understanding how two little words — "Hello World" — end up on a screen took me three years.
+
+What I ended up with is a language whose keywords are in Mongolian, and which runs directly on the CPU:
 
 ```
 extern функц мөр_хэвлэх(м мөр) -> хоосон {}
@@ -21,7 +25,22 @@ extern функц мөр_хэвлэх(м мөр) -> хоосон {}
 
 (`функц` is *function*, `мөр_хэвлэх` is *print a line*, `буц` is *return*. The output means "Good day.")
 
-Every programmer has written a hello world. I'd written dozens. What I couldn't tell you was what actually happens between typing these six lines and seeing «Өдрийн мэнд» on the screen — not the hand-wavy "the computer runs it", but every step, all the way down to the CPU. **Answering that took three years.**
+Something like that.
+The first feedback anyone gives on seeing it is, of course:
+
+Isn't this just C with the keywords translated?
+
+Why would you even build this?
+
+Why Mongolian?
+
+None of these can be answered in a single sentence, so this is going to be a long piece.
+
+One long piece is tiring to read, so I decided to write it in parts.
+
+Part one: the why, and the work.
+
+Every programmer has probably written a hello world. I'd written plenty. But I couldn't tell you what actually happens between typing these six lines and seeing «Өдрийн мэнд» on the screen — not the hand-wavy "the computer runs it", but every step, all the way down to the CPU. That's what I set out to learn.
 
 ![](diagrams/s1-1-question.svg)
 
@@ -30,9 +49,9 @@ Mon is where that question ended up. It started much smaller. In my first year I
 
 ## So — why do this at all?
 
-I was a second-year student who hadn't figured anything out yet.
+I was a second-year student.
 
-I kept running into the same 1am thought: *how am I going to get a job, and what do I actually have that sets me apart from the next student?* I had zero work experience. So I decided, in the slightly desperate way students decide things, that I needed one real thing I could point at and say: **I built that.**
+I kept coming back to the same question: *how am I going to get a job, and what do I actually have that sets me apart from the next student?* I had zero work experience. Sitting there empty-handed, I figured I had to make something, and I realized I needed one real thing I could point at and say: **I built that.**
 
 ![](diagrams/s1-1-1am.svg)
 
@@ -57,7 +76,7 @@ For something that hard, I didn't want to flail — I wanted structure. So I did
 
 ## The book: *Crafting Interpreters*
 
-[*Crafting Interpreters*](https://craftinginterpreters.com) by Robert Nystrom (finished in 2020) deserves every bit of praise it gets. It's beginner-friendly without being shallow, it's full of hand-drawn diagrams, and — rare for a technical book — it's genuinely *fun* to read. If you want to learn this topic, start here. I mean it.
+[*Crafting Interpreters*](https://craftinginterpreters.com) by Robert Nystrom (finished in 2020) deserves every bit of praise it gets. It's easy for readers to follow, it's full of hand-drawn diagrams, and — rare for a technical book — it's genuinely *fun* to read. If you want to learn this topic, start here. I mean it.
 
 The format is simple: you don't read *about* interpreters, you build one, chapter by chapter. Each chapter hands you code, an explanation, and pictures, and by the end you have a real, working language. The book comes in two halves, and the jump between them is the whole education.
 
