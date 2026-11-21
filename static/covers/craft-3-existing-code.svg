@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+<title>Trace one execution path through unfamiliar code</title>
+<g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M42 91H74L102 57H150L184 91H201 M74 91L102 125H151L184 91 M102 57L151 125" stroke="#202320" />
+<path d="M42 91H74L102 125H151L184 91H201" stroke="#159641" stroke-width="3"/>
+<circle cx="74" cy="91" r="3" fill="#202320"/>
+<circle cx="102" cy="57" r="3" fill="#202320"/>
+<circle cx="150" cy="57" r="3" fill="#202320"/>
+<circle cx="102" cy="125" r="3" fill="#202320"/>
+<circle cx="151" cy="125" r="3" fill="#202320"/>
+<circle cx="184" cy="91" r="3" fill="#202320"/></g>
+</svg>

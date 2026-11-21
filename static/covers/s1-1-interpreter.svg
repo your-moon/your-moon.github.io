@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+<title>Evaluate multiplication before addition</title>
+<g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M104 55L71 86 M104 55L141 86 M141 86L115 120 M141 86L167 120" stroke="#202320" />
+<text x="104" y="50" fill="#202320" font-family="monospace" font-size="15" text-anchor="middle">+</text>
+<text x="66" y="99" fill="#202320" font-family="monospace" font-size="15" text-anchor="middle">2</text>
+<text x="145" y="83" fill="#159641" font-family="monospace" font-size="15" text-anchor="middle">×</text>
+<text x="112" y="136" fill="#202320" font-family="monospace" font-size="15" text-anchor="middle">3</text>
+<text x="171" y="136" fill="#202320" font-family="monospace" font-size="15" text-anchor="middle">4</text></g>
+</svg>

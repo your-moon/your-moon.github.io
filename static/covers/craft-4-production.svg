@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+<title>Retries spread apart after a failure</title>
+<g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M33 106H207" stroke="#202320" />
+<path d="M43 106v-28" stroke="#202320" />
+<path d="M54 106v-28" stroke="#202320" />
+<path d="M75 106v-28" stroke="#202320" />
+<path d="M116 106v-28" stroke="#202320" />
+<path d="M197 106v-28" stroke="#159641" />
+<circle cx="197" cy="78" r="4" fill="#159641"/>
+<text x="120" y="129" fill="#202320" font-family="monospace" font-size="10" text-anchor="middle">retry interval</text></g>
+</svg>

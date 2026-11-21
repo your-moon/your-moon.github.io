@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+<title>Many dependencies meet one interface</title>
+<g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M36 48 C78 48 80 90 116 90" stroke="#202320" />
+<path d="M36 69 C78 69 80 90 116 90" stroke="#202320" />
+<path d="M36 90 C78 90 80 90 116 90" stroke="#202320" />
+<path d="M36 111 C78 111 80 90 116 90" stroke="#202320" />
+<path d="M36 132 C78 132 80 90 116 90" stroke="#202320" />
+<rect x="116" y="72" width="18" height="36" stroke="#202320"/>
+<path d="M134 90H204" stroke="#159641" />
+<circle cx="204" cy="90" r="3" fill="#159641"/></g>
+</svg>

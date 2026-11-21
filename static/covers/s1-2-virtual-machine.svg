@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+<title>Two stack operands become one value</title>
+<g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="45" y="69" width="36" height="22" stroke="#202320"/>
+<rect x="45" y="91" width="36" height="22" stroke="#202320"/>
+<text x="63" y="85" fill="#202320" font-family="monospace" font-size="14" text-anchor="middle">4</text>
+<text x="63" y="107" fill="#202320" font-family="monospace" font-size="14" text-anchor="middle">3</text>
+<path d="M95 91H148m-7 -6 7 6-7 6" stroke="#202320" />
+<text x="121" y="79" fill="#202320" font-family="monospace" font-size="10" text-anchor="middle">MUL</text>
+<rect x="161" y="91" width="36" height="22" stroke="#159641"/>
+<text x="179" y="107" fill="#159641" font-family="monospace" font-size="14" text-anchor="middle">12</text></g>
+</svg>
