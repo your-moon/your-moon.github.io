@@ -297,7 +297,7 @@ def main():
         library = own + rest
         def tile(post):
             cover = post["pair"] if post["lang"] == "mn" and post["pair"] else post["slug"]
-            art = f'<img src="/covers/{cover}-ink.webp" width="840" height="840" alt="" decoding="async">'
+            art = f'<img src="/covers/{cover}-engraved.webp" width="840" height="840" alt="" decoding="async">'
             language = ' <small>EN</small>' if post["lang"] != lang else ""
             return (f'<a class="tile" data-series="{html.escape(post["series"], quote=True)}" href="/{post["slug"]}/">'
                     f'<span class="art" aria-hidden="true">{art}</span><time>{post["date"]}</time>'
