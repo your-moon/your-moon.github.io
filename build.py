@@ -136,7 +136,7 @@ footer a{color:var(--accent);text-decoration:underline;text-underline-offset:3px
 # Cookieless page-view counter; dashboard at https://munkherdene.goatcounter.com
 ANALYTICS = '<script data-goatcounter="https://munkherdene.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
 THEME_JS = """<script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}
-if(!t)t='light';
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
 document.documentElement.dataset.theme=t})();
 function flip(){var d=document.documentElement,t=d.dataset.theme==='dark'?'light':'dark';d.dataset.theme=t;
 try{localStorage.setItem('theme',t)}catch(e){}}</script>"""
@@ -296,14 +296,8 @@ def main():
         rest = [p for p in posts if p["lang"] != lang and not p["pair"]] if lang == "mn" else []
         library = own + rest
         def tile(post):
-            diagram = DIAGRAM.search(post["text"])
-            art = ""
-            if diagram:
-                name = diagram.group(2)
-                source = ROOT / "diagrams" / "out" / f"{name}.{post['lang']}.svg"
-                if not source.exists():
-                    source = source.with_name(name + ".svg")
-                art = source.read_text()
+            cover = post["pair"] if post["lang"] == "mn" and post["pair"] else post["slug"]
+            art = f'<img src="/covers/{cover}.webp" width="800" height="800" alt="" decoding="async">'
             language = ' <small>EN</small>' if post["lang"] != lang else ""
             return (f'<a class="tile" data-series="{html.escape(post["series"], quote=True)}" href="/{post["slug"]}/">'
                     f'<span class="art" aria-hidden="true">{art}</span><time>{post["date"]}</time>'
