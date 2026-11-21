@@ -1,6 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
 <title>A breakpoint traps execution at one instruction</title>
-<g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<defs><pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M-1 1l2-2M0 4l4-4M3 5l2-2" stroke="#809485" stroke-width=".8"/></pattern></defs>
+<rect x="33" y="42" width="135" height="100" fill="#dbe3da"/>
+<rect x="33" y="42" width="20" height="100" fill="url(#hatch)"/>
+<rect x="33" y="85" width="135" height="14" fill="#ade8af"/>
+<text x="157" y="48" fill="#49564b" font-family="monospace" font-size="8">trap</text>
+<g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 <path d="M60 55h92" stroke="#202320" stroke-width="2"/>
 <path d="M60 67h65" stroke="#202320" stroke-width="2"/>
 <path d="M60 79h102" stroke="#202320" stroke-width="2"/>

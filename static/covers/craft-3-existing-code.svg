@@ -1,6 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
 <title>Trace one execution path through unfamiliar code</title>
-<g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<defs><pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M-1 1l2-2M0 4l4-4M3 5l2-2" stroke="#809485" stroke-width=".8"/></pattern></defs>
+<path d="M42 91l32 0 28-34h48l34 34-33 34h-49Z" fill="#dbe3da"/>
+<path d="M74 91l28 34h49l33-34-33 23h-45Z" fill="#ade8af"/>
+<path d="M102 57h48l-20 36Z" fill="url(#hatch)"/>
+<text x="35" y="75" fill="#49564b" font-family="monospace" font-size="8">entry</text>
+<text x="160" y="143" fill="#49564b" font-family="monospace" font-size="8">return</text>
+<g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 <path d="M42 91H74L102 57H150L184 91H201 M74 91L102 125H151L184 91 M102 57L151 125" stroke="#202320" />
 <path d="M42 91H74L102 125H151L184 91H201" stroke="#159641" stroke-width="3"/>
 <circle cx="74" cy="91" r="3" fill="#202320"/>

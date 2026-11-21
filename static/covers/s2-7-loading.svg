@@ -1,6 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
 <title>File segments are mapped into memory with a gap</title>
-<g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<defs><pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M-1 1l2-2M0 4l4-4M3 5l2-2" stroke="#809485" stroke-width=".8"/></pattern></defs>
+<path d="M77 64C115 64 124 44 164 44V63C124 63 115 83 77 83Z" fill="#dbe3da"/>
+<path d="M77 83C115 83 128 104 164 104V135C128 135 113 114 77 114Z" fill="#ade8af"/>
+<rect x="42" y="64" width="35" height="19" fill="url(#hatch)"/>
+<rect x="42" y="83" width="35" height="31" fill="#ade8af"/>
+<rect x="164" y="44" width="35" height="19" fill="url(#hatch)"/>
+<rect x="164" y="104" width="35" height="31" fill="#ade8af"/>
+<g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 <rect x="42" y="64" width="35" height="50" stroke="#202320"/>
 <path d="M42 83H77" stroke="#202320" />
 <rect x="164" y="44" width="35" height="19" stroke="#202320"/>
