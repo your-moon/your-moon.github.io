@@ -136,7 +136,7 @@ footer a{color:var(--accent);text-decoration:underline;text-underline-offset:3px
 # Cookieless page-view counter; dashboard at https://munkherdene.goatcounter.com
 ANALYTICS = '<script data-goatcounter="https://munkherdene.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
 THEME_JS = """<script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}
-if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+if(!t)t='light';
 document.documentElement.dataset.theme=t})();
 function flip(){var d=document.documentElement,t=d.dataset.theme==='dark'?'light':'dark';d.dataset.theme=t;
 try{localStorage.setItem('theme',t)}catch(e){}}</script>"""
@@ -158,6 +158,8 @@ def page(title, body, lang="en", desc=BLURB, small=False, alt=None, path="/"):
     alt = alt or {"en": "/", "mn": "/mn/"}
     switch = '<nav class="lang">' + "".join(
         f'<a href="{alt[l]}" hreflang="{l}" class="{"on" if l == lang else ""}">{lab}</a>' for l, lab in (("en", "EN"), ("mn", "МН"))) + "</nav>"
+    home = UI[lang]["home"]
+    writing, featured, archive = ("Writing", "Featured", "All Writing") if lang == "en" else ("Нийтлэл", "Онцлох", "Бүх нийтлэл")
     return f"""<!doctype html>
 <html lang="{lang}"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -169,8 +171,10 @@ def page(title, body, lang="en", desc=BLURB, small=False, alt=None, path="/"):
 <link rel="alternate" type="application/rss+xml" title="{AUTHOR}" href="/rss.xml">
 <link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 {"".join(f'<link rel="preload" href="/fonts/{f}" as="font" type="font/woff2" crossorigin>' for f in PRELOAD[lang])}
-<style>{STYLE}</style>{THEME_JS}{ANALYTICS}</head>
-<body><div class="wrap"><header class="top">{brand}<div class="tools"><a class="nav" href="{UI[lang]["about_url"]}">{UI[lang]["about"]}</a>{switch}<button class="toggle" onclick="flip()" aria-label="Toggle dark mode">◐</button></div></header>
+<style>{STYLE}</style><link rel="stylesheet" href="/writing.css"><script defer src="/writing.js"></script>{THEME_JS}{ANALYTICS}</head>
+<body><div class="wrap"><header class="mast"><div class="mast-title">{brand}<span>/</span><a href="{home}">{writing}</a></div>
+<nav class="sections"><a href="{home}#featured">[1]　{featured}</a><a href="{home}#all-writing">[2]　{archive}</a></nav>
+<details class="menu"><summary aria-label="Menu">[M]</summary><div><a href="{home}">{writing}</a><a href="{UI[lang]["about_url"]}">{UI[lang]["about"]}</a><a href="/rss.xml">RSS</a>{switch}<button onclick="flip()" aria-label="Toggle dark mode">◐</button></div></details></header>
 {body}
 <footer><a href="/rss.xml">RSS</a> · © {dt.date.today().year} {AUTHOR}</footer></div></body></html>
 """
@@ -288,18 +292,34 @@ def main():
 
     for lang in ("en", "mn"):
         u = UI[lang]
-        idx = f'<aside class="bio"><img class="avatar" src="/avatar.jpg" width="44" height="44" alt=""><p>{u["by"].format(name=f"<b>{AUTHOR}</b>")}</p></aside><main>'
         own = [p for p in posts if p["lang"] == lang]
         rest = [p for p in posts if p["lang"] != lang and not p["pair"]] if lang == "mn" else []
-        last = None
-        for p in own + rest:
-            series = p["series"] if p in own else u["other"]
-            if series != last:
-                idx += f'<div class="series">{html.escape(series)}</div>'
-                last = series
-            tag = '<span class="tag">EN</span>' if p not in own else ""
-            idx += (f'<article class="card"><h3><a href="/{p["slug"]}/">{title_html(p["title"])}</a>{tag}</h3>'
-                    f'<small>{fmt(p["date"], lang)} · ☕ {p["mins"]} {u["read"]}</small><p>{html.escape(p["sub"] or p["blurb"])}</p></article>')
+        library = own + rest
+        def tile(post):
+            diagram = DIAGRAM.search(post["text"])
+            art = ""
+            if diagram:
+                name = diagram.group(2)
+                source = ROOT / "diagrams" / "out" / f"{name}.{post['lang']}.svg"
+                if not source.exists():
+                    source = source.with_name(name + ".svg")
+                art = source.read_text()
+            language = ' <small>EN</small>' if post["lang"] != lang else ""
+            return (f'<a class="tile" data-series="{html.escape(post["series"], quote=True)}" href="/{post["slug"]}/">'
+                    f'<span class="art" aria-hidden="true">{art}</span><time>{post["date"]}</time>'
+                    f'<span>{title_html(post["title"])}{language}</span></a>')
+        featured = library[:5]
+        choices = "".join(f'<option>{html.escape(series)}</option>' for series in dict.fromkeys(p["series"] for p in library))
+        years = "".join(f"<option>{year}</option>" for year in sorted({p["date"][:4] for p in library}, reverse=True))
+        year_label = "Year" if lang == "en" else "Он"
+        all_label = "All" if lang == "en" else "Бүгд"
+        cat, grid, rows, find = ("Category", "Grid", "List", "Find") if lang == "en" else ("Ангилал", "Сүлжээ", "Жагсаалт", "Хайх")
+        idx = ('<main class="writing"><section id="featured" aria-label="Featured">' + "".join(map(tile, featured)) + '</section>'
+               '<section id="all-writing" aria-label="All writing"><div class="results">' + "".join(map(tile,library)) + '</div>'
+               f'<aside class="filters"><label>{cat}<select id="category"><option value="">{all_label}</option>{choices}</select></label>'
+               f'<label>{year_label}<select id="year"><option value="">{all_label}</option>{years}</select></label>'
+               f'<button id="list">{rows}</button> / <button id="grid">{grid}</button></aside></section>'
+               f'<details class="find"><summary>{find} [F]</summary><input aria-label="{find}" type="search"></details>')
         d = OUT / u["home"].strip("/")
         d.mkdir(exist_ok=True)
         (d / "index.html").write_text(page(f"{AUTHOR} — {u['title']}", idx + "</main>", lang, u["blurb"], path=u["home"]))
